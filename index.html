@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>PNG pottery</title>
+		<title>Virtual Petrography</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 		<link type="text/css" rel="stylesheet" href="main.css">
@@ -82,7 +82,8 @@
 				const timorI1Tex = textureLoader.load('textures/WD_86_2.jpg'); //
 				const timorI2Tex = textureLoader.load('textures/WD_86_6.jpg'); //
 				const timorI3Tex = textureLoader.load('textures/WD_86_17.jpg'); //
-				const lizI1Tex = textureLoader.load('textures/WD_83_12.jpg'); //
+				//const lizI1Tex = textureLoader.load('textures/WD_83_12.jpg'); //
+				const wangilTex = textureLoader.load('textures/WD_17_1.jpg'); //
 				const vanI1Tex = textureLoader.load('textures/WD_49_22.jpg'); //
 				const vanI2Tex = textureLoader.load('textures/WD_51_6.jpg'); //
 				const vanI3Tex = textureLoader.load('textures/WD_45_12.jpg'); //
@@ -228,13 +229,19 @@
 				pngI2.position.set( -1.8, 0.7, 1.0); //8
 				pngI2.rotation.y = - Math.PI * 4 / 3;
 				pngPlanes.add( pngI2 );
+				//lizPlanes = new THREE.Group();
+				//scene.add( lizPlanes);
+				//const lizI1 = new THREE.Mesh( petroGeometry, new THREE.MeshBasicMaterial({ map: lizI1Tex }));
+				//lizI1.position.set( -1.9, 1.9, 0.5); 
+				//lizI1.rotation.y = - Math.PI * 1.42;
+				//lizPlanes.add( lizI1 ); //8a
+				
 				lizPlanes = new THREE.Group();
 				scene.add( lizPlanes);
-				const lizI1 = new THREE.Mesh( petroGeometry, new THREE.MeshBasicMaterial({ map: lizI1Tex }));
+				const lizI1 = new THREE.Mesh( petroGeometry, new THREE.MeshBasicMaterial({ map: wangilTex }));
 				lizI1.position.set( -1.9, 1.9, 0.5); 
 				lizI1.rotation.y = - Math.PI * 1.42;
 				lizPlanes.add( lizI1 ); //8a
-
 			
 				scene.add( new THREE.HemisphereLight( 0x808080, 0x606060 ) );
 
@@ -278,10 +285,15 @@
 				bukaSite.userData.planes = bukaPlanes;
 				group.add( bukaSite);
 
-				const lizSite = new THREE.Mesh( new THREE.ConeGeometry(  0.02, .10, 15  ), new THREE.MeshStandardMaterial( {color: 0xff0000} ) );
-				lizSite.position.set(-0.53189, 0.01, 0.46846);
-				lizSite.userData.planes = lizPlanes;
-				group.add( lizSite);
+				//const lizSite = new THREE.Mesh( new THREE.ConeGeometry(  0.02, .10, 15  ), new THREE.MeshStandardMaterial( {color: 0xff0000} ) );
+				//lizSite.position.set(-0.53189, 0.01, 0.46846);
+				//lizSite.userData.planes = lizPlanes;
+				//group.add( lizSite);
+
+				const wangilSite = new THREE.Mesh( new THREE.ConeGeometry(  0.02, .10, 15  ), new THREE.MeshStandardMaterial( {color: 0xff0000} ) );
+				wangilSite.position.set(-1.1013, 0.01, 0.025032);
+				wangilSite.userData.planes = lizPlanes;
+				group.add( wangilSite);
 
 				const guamSite = new THREE.Mesh( new THREE.ConeGeometry(  0.02, .10, 15  ), new THREE.MeshStandardMaterial( {color: 0xff0000} ) );
 				guamSite.position.set(-0.57795, 0.01, -0.94011);
